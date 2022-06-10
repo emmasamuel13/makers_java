@@ -3,7 +3,11 @@
  */
 package leap_years;
 
+import java.util.ArrayList;
+
 public class LeapYears {
+
+    public ArrayList<Integer> leap_years = new ArrayList<>();
     public Boolean check_leap(Integer year) {
         if (year % 400 == 0) {
             return true;
@@ -14,5 +18,14 @@ public class LeapYears {
         } else {
             return false;
         }
+    }
+
+    public ArrayList<Integer> leap_list(Integer start_year, Integer end_year) {
+        for (Integer year = start_year; year <= end_year; year++) {
+            if (check_leap(year)) {
+                leap_years.add(year);
+            }
+        }
+        return leap_years;
     }
 }
