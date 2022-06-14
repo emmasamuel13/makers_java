@@ -3,12 +3,29 @@
  */
 package middle_letter;
 
+import java.util.ArrayList;
+
 public class MiddleLetter {
-    public String getGreeting() {
-        return "Hello World!";
+    public static void main(String[] args) {
+        MiddleLetter MidLet = new MiddleLetter();
+        System.out.println(MidLet.GetMiddle("test"));
     }
 
-    public static void main(String[] args) {
-        System.out.println(new MiddleLetter().getGreeting());
+    public ArrayList<String> ResultArray = new ArrayList<String>();
+
+    public String GetMiddle(String WordString) {
+        String[] WordArray = WordString.split("");
+        Integer WordLength = WordArray.length;
+        if (WordLength % 2 == 0 ) {
+            Integer SecondLetter = WordLength / 2;
+            Integer FirstLetter = SecondLetter - 1;
+            ResultArray.add(WordArray[FirstLetter]);
+            ResultArray.add(WordArray[SecondLetter]);
+        } else {
+            Integer Letter = WordLength / 2;
+            ResultArray.add(WordArray[Letter]);
+        }
+        String FinalWordString = String.join("", ResultArray);
+        return FinalWordString;
     }
 }

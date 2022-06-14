@@ -4,8 +4,31 @@
 package middle_letter;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class MiddleLetterTest {
-    @Test public void ReturnsES
+    @Test public void ReturnsES() {
+        MiddleLetter word = new MiddleLetter();
+        assertEquals("should return es", String.valueOf("es"), word.GetMiddle("test"));
+    }
+
+    @Test public void ReturnsT() {
+        MiddleLetter word = new MiddleLetter();
+        assertEquals("should return t", String.valueOf("t"), word.GetMiddle("testing"));
+    }
+
+    @Test public void ReturnsDD() {
+        MiddleLetter word = new MiddleLetter();
+        assertEquals("should return dd", String.valueOf("dd"), word.GetMiddle("middle"));
+    }
+
+    @Test public void ReturnsA() {
+        MiddleLetter word = new MiddleLetter();
+        assertEquals("should return A", String.valueOf("A"), word.GetMiddle("A"));
+    }
+
+    @Test public void ReturnsOF() {
+        MiddleLetter word = new MiddleLetter();
+        assertEquals("should return of", String.valueOf("of"), word.GetMiddle("of"));
+    }
 }
