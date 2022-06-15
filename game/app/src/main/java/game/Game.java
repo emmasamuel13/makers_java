@@ -12,13 +12,12 @@ public class Game {
         AnswerString = Answer;
     }
 
-    public static void main(String[] args) {
-    }
 
-    public ArrayList<String> HangmanArray = new ArrayList<String>();
+
+    public Integer Counter = 11;
+    public ArrayList<String> HangmanArray = new ArrayList<>();
 
     public String TakeYourTurn(String Letter) {
-        Integer Counter = 11;
         String[] AnswerArray = AnswerString.split("");
         Integer AnswerLength = AnswerArray.length;
         if (Counter == 11) {
@@ -29,7 +28,7 @@ public class Game {
             }
         } else if (AnswerString.contains(Letter)) {
             for (Integer Index = 0; Index < AnswerLength; Index++) {
-                if (HangmanArray.get(Index) == Letter) {
+                if (AnswerArray[Index].equals(Letter)){
                     HangmanArray.set(Index, Letter);
                 }
             }
@@ -38,5 +37,8 @@ public class Game {
         }
         String HangmanString = String.join("", HangmanArray);
         return HangmanString;
+    }
+
+    public static void main(String[] args) {
     }
 }
