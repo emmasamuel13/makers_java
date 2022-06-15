@@ -8,8 +8,14 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class GameTest {
-    @Test public void testGetsWordToGuess() {
+    @Test public void ShowsFirstLetter() {
         Game game = new Game("MAKERS");
-        assertEquals("M---E-S", game.getWordToGuess("MITTENS"));
+        assertEquals("M-----", game.TakeYourTurn(""));
+    }
+
+    @Test public void GuessesMakersSuccessfully() {
+        Game game = new Game("MAKERS");
+        assertEquals("M-----", game.TakeYourTurn(""));
+        assertEquals("MA----", game.TakeYourTurn("A"));
     }
 }

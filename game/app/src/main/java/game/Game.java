@@ -6,30 +6,37 @@ package game;
 import java.util.ArrayList;
 
 public class Game {
-    String str_guess;
+    String AnswerString;
 
-    public Game(String guess) {
-        str_guess = guess;
+    public Game(String Answer) {
+        AnswerString = Answer;
     }
 
     public static void main(String[] args) {
-        Game game = new Game("MAKERS");
-        System.out.println(game.getWordToGuess("MITTENS"));
     }
 
-    public ArrayList<String> arr_reveal = new ArrayList<String>();
+    public ArrayList<String> HangmanArray = new ArrayList<String>();
 
-    public String getWordToGuess(String str_answer) {
-        String[] arr_answer = str_answer.split("");
-        Integer length_answer = arr_answer.length;
-        for (Integer index = 0; index < length_answer; index++) {
-            if (str_guess.contains(arr_answer[index])) {
-                arr_reveal.add(arr_answer[index]);
-            } else {
-                arr_reveal.add("-");
+    public String TakeYourTurn(String Letter) {
+        Integer Counter = 11;
+        String[] AnswerArray = AnswerString.split("");
+        Integer AnswerLength = AnswerArray.length;
+        if (Counter == 11) {
+            HangmanArray.add(AnswerArray[0]);
+            for (Integer Times = 0; Times < AnswerLength - 1; Times++) {
+                HangmanArray.add("-");
+                Counter -= 1;
             }
+        } else if (AnswerString.contains(Letter)) {
+            for (Integer Index = 0; Index < AnswerLength; Index++) {
+                if (HangmanArray.get(Index) == Letter) {
+                    HangmanArray.set(Index, Letter);
+                }
+            }
+        } else {
+            Counter -= 1;
         }
-        String str_reveal = String.join("", arr_reveal);
-        return (str_reveal);
+        String HangmanString = String.join("", HangmanArray);
+        return HangmanString;
     }
 }
